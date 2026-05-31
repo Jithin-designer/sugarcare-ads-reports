@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SugarCARE — Meta Ads Daily Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #4A2FA0;
+    --purple-dark: #1A0E50;
+    --purple-tint: #E4E0F4;
+    --purple-muted: #C9BFEF;
+    --purple-mid: #5C5478;
+    --orange: #E86A1A;
+    --orange-tint: #FCE4D4;
+    --white: #FFFFFF;
+    --body-text: #1A0E50;
+    --muted: #5C5478;
+    --border: #E4E0F4;
+    --success: #1a7a4a;
+    --success-bg: #e6f5ed;
+    --warn: #b45309;
+    --warn-bg: #fef3c7;
+    --danger: #c0392b;
+    --danger-bg: #fdecea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f4f2fb;
+    color: var(--body-text);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .header {
+    background: var(--purple-dark);
+    padding: 28px 20px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: var(--purple);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; position: relative; }
+  .brand-mark { font-size: 20px; font-weight: 800; color: var(--white); letter-spacing: -0.3px; }
+  .brand-mark span { color: var(--orange); }
+  .brand-sub { font-size: 11px; font-weight: 500; color: var(--purple-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .report-title { color: var(--purple-muted); font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .report-date { color: var(--white); font-size: 22px; font-weight: 700; margin-bottom: 24px; position: relative; }
+  .orange-rule { height: 2.5px; background: var(--orange); margin: 0 -20px; width: calc(100% + 40px); }
+  .section { padding: 20px 16px; }
+  .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 12px; }
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 4px; }
+  .stat-card { background: var(--white); border-radius: 14px; padding: 14px 16px; border: 1px solid var(--border); }
+  .stat-card.accent { background: var(--purple); border-color: var(--purple); }
+  .stat-card.orange { background: var(--orange); border-color: var(--orange); }
+  .stat-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .stat-card.accent .stat-label, .stat-card.orange .stat-label { color: rgba(255,255,255,0.7); }
+  .stat-value { font-size: 26px; font-weight: 800; color: var(--body-text); line-height: 1.1; }
+  .stat-card.accent .stat-value, .stat-card.orange .stat-value { color: var(--white); }
+  .stat-sub { font-size: 12px; color: var(--muted); margin-top: 2px; font-weight: 500; }
+  .stat-card.accent .stat-sub, .stat-card.orange .stat-sub { color: rgba(255,255,255,0.65); }
+  .divider { height: 2.5px; background: var(--orange); margin: 0 16px; }
+  .campaign-list { display: flex; flex-direction: column; gap: 10px; }
+  .campaign-row { background: var(--white); border-radius: 12px; border: 1px solid var(--border); padding: 14px 16px; position: relative; overflow: hidden; }
+  .campaign-row::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--purple-tint); border-radius: 12px 0 0 12px; }
+  .campaign-row.good::before { background: var(--success); }
+  .campaign-row.warn::before { background: var(--orange); }
+  .campaign-row.danger::before { background: var(--danger); }
+  .campaign-name { font-size: 15px; font-weight: 700; color: var(--body-text); margin-bottom: 8px; }
+  .campaign-meta { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; }
+  .meta-key { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .meta-val { font-size: 14px; font-weight: 700; color: var(--body-text); }
+  .meta-val.good { color: var(--success); }
+  .meta-val.warn { color: var(--warn); }
+  .meta-val.danger { color: var(--danger); }
+  .flag-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-top: 8px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .flag-badge.warn { background: var(--warn-bg); color: var(--warn); }
+  .flag-badge.danger { background: var(--danger-bg); color: var(--danger); }
+  .flag-badge.good { background: var(--success-bg); color: var(--success); }
+  .flag-badge.dead { background: #f1f0f4; color: var(--muted); }
+  .winner-card { background: var(--purple-tint); border-radius: 14px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .winner-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
+  .winner-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple); margin-bottom: 2px; }
+  .winner-name { font-size: 18px; font-weight: 800; color: var(--purple-dark); }
+  .winner-detail { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .alert-card { border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; border-left: 4px solid; }
+  .alert-card.warn { background: var(--warn-bg); border-color: var(--orange); }
+  .alert-card.danger { background: var(--danger-bg); border-color: var(--danger); }
+  .alert-card.dead { background: #f4f2fb; border-color: var(--border); }
+  .alert-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .alert-card.warn .alert-title { color: var(--warn); }
+  .alert-card.danger .alert-title { color: var(--danger); }
+  .alert-card.dead .alert-title { color: var(--muted); }
+  .alert-body { font-size: 13px; color: var(--body-text); line-height: 1.5; }
+  .nirmal-box { background: var(--purple-dark); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; }
+  .nirmal-box::after { content: ''; position: absolute; bottom: -30px; right: -30px; width: 120px; height: 120px; background: var(--purple); border-radius: 50%; opacity: 0.4; }
+  .nirmal-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--purple-muted); margin-bottom: 8px; }
+  .nirmal-text { font-size: 16px; font-weight: 500; color: var(--white); line-height: 1.6; position: relative; z-index: 1; }
+  .copy-btn { margin-top: 14px; display: flex; align-items: center; gap: 8px; background: var(--orange); border: none; border-radius: 10px; padding: 12px 20px; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; justify-content: center; position: relative; z-index: 1; -webkit-tap-highlight-color: transparent; }
+  .copy-btn:active { opacity: 0.85; transform: scale(0.98); }
+  .footer { background: var(--purple-dark); padding: 20px; text-align: center; margin-top: 8px; }
+  .footer-brand { font-size: 14px; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+  .footer-brand span { color: var(--orange); }
+  .footer-phone { font-size: 15px; font-weight: 700; color: var(--purple-muted); letter-spacing: 0.05em; }
+  .footer-note { font-size: 11px; color: var(--purple-muted); margin-top: 8px; opacity: 0.6; }
+  .gap { height: 8px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">
+    <div>
+      <div class="brand-mark">Sugar<span>C</span>ARE Clinics</div>
+      <div class="brand-sub">Meta Ads Performance</div>
+    </div>
+  </div>
+  <div class="report-title">Daily Report</div>
+  <div class="report-date">%%REPORT_DATE%%</div>
+  <div class="orange-rule"></div>
+</div>
+
+<div class="section">
+  <div class="section-label">Account Summary — Today</div>
+  <div class="summary-grid">
+    <div class="stat-card accent">
+      <div class="stat-label">Leads</div>
+      <div class="stat-value">%%TOTAL_LEADS%%</div>
+      <div class="stat-sub">generated today</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-label">Avg CPL</div>
+      <div class="stat-value">%%AVG_CPL%%</div>
+      <div class="stat-sub">per lead</div>
+    </div>
+  </div>
+  <div class="gap"></div>
+  <div class="two-col">
+    <div class="stat-card">
+      <div class="stat-label">Spend</div>
+      <div class="stat-value" style="font-size:20px">%%TOTAL_SPEND%%</div>
+      <div class="stat-sub">total today</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Reach</div>
+      <div class="stat-value" style="font-size:20px">%%REACH%%</div>
+      <div class="stat-sub">%%IMPRESSIONS%% impressions</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Campaign Breakdown</div>
+  <div class="campaign-list">
+%%CAMPAIGN_ROWS%%
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Top Performer Today</div>
+  <div style="display:flex; flex-direction:column; gap:10px;">
+    <div class="winner-card">
+      <div class="winner-icon">🥇</div>
+      <div>
+        <div class="winner-title">Lowest CPL</div>
+        <div class="winner-name">%%WINNER_CPL_NAME%%</div>
+        <div class="winner-detail">%%WINNER_CPL_DETAIL%%</div>
+      </div>
+    </div>
+    <div class="winner-card">
+      <div class="winner-icon">🏆</div>
+      <div>
+        <div class="winner-title">Most Leads</div>
+        <div class="winner-name">%%WINNER_LEADS_NAME%%</div>
+        <div class="winner-detail">%%WINNER_LEADS_DETAIL%%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Campaigns to Watch</div>
+%%ALERTS%%
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Message for Nirmal</div>
+  <div class="nirmal-box">
+    <div class="nirmal-label">📱 WhatsApp Ready</div>
+    <div class="nirmal-text" id="nirmal-msg">%%NIRMAL_MSG%%</div>
+    <button class="copy-btn" onclick="copyNirmal()">
+      📋 Copy &amp; Send to Nirmal
+    </button>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Sugar<span>C</span>ARE Clinics</div>
+  <div class="footer-phone">799 4884 799</div>
+  <div class="footer-note">Generated by Claude</div>
+</div>
+
+<script>
+function copyNirmal() {
+  const text = document.getElementById('nirmal-msg').innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = '📋 Copy & Send to Nirmal'; }, 2500);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = '📋 Copy & Send to Nirmal'; }, 2500);
+  });
+}
+</script>
+</body>
+</html>
