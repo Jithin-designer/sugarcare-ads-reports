@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SugarCARE Clinics — Meta Ads Report · May 31, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #4A2FA0;
+    --purple-deep: #1A0E50;
+    --purple-tint: #E4E0F4;
+    --purple-mid: #C9BFEF;
+    --purple-muted: #5C5478;
+    --orange: #E86A1A;
+    --orange-tint: #FCE4D4;
+    --white: #FFFFFF;
+    --body-text: #1A0E50;
+    --muted: #5C5478;
+    --good: #1a7a4a;
+    --good-bg: #e6f4ed;
+    --warn: #b35200;
+    --warn-bg: #fff0e6;
+    --alert: #9b1c1c;
+    --alert-bg: #fde8e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f5f4fb;
+    color: var(--body-text);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--purple-deep);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(232,106,26,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 32px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .brand-mark {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .brand-mark span { color: var(--orange); }
+  .brand-sub {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--purple-mid);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid rgba(201,191,239,0.3);
+    border-radius: 20px;
+  }
+  .report-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .report-heading {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .report-meta {
+    font-size: 13px;
+    color: var(--purple-mid);
+    font-weight: 400;
+    margin-bottom: 28px;
+  }
+  .report-meta strong { color: var(--white); font-weight: 600; }
+  .header-rule {
+    height: 2.5px;
+    background: var(--orange);
+    width: 100%;
+  }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 32px 60px;
+  }
+
+  /* ── SECTION RULE ── */
+  .section-rule {
+    height: 2.5px;
+    background: var(--orange);
+    width: 100%;
+    margin: 36px 0 28px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--purple-deep);
+    margin-bottom: 20px;
+  }
+  .section-title .live-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    top: -1px;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+    50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+  }
+
+  /* ── SUMMARY CARDS ── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .summary-grid.five { grid-template-columns: repeat(5, 1fr); }
+  .card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 18px 16px;
+    border: 1px solid rgba(74,47,160,0.08);
+  }
+  .card-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .card-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--purple-deep);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .card-value.orange { color: var(--orange); }
+  .card-note {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .card.highlight {
+    background: var(--purple);
+    border-color: var(--purple);
+  }
+  .card.highlight .card-label { color: var(--purple-mid); }
+  .card.highlight .card-value { color: var(--white); }
+  .card.highlight .card-note { color: var(--purple-mid); }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid rgba(74,47,160,0.08);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: var(--purple-deep); }
+  thead th {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--purple-mid);
+    padding: 12px 16px;
+    text-align: left;
+  }
+  thead th:not(:first-child) { text-align: right; }
+  tbody tr { border-bottom: 1px solid rgba(74,47,160,0.06); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--purple-tint); }
+  tbody td {
+    padding: 13px 16px;
+    font-size: 14px;
+    color: var(--body-text);
+    font-weight: 500;
+  }
+  tbody td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  .campaign-name { font-weight: 700; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .badge.good { background: var(--good-bg); color: var(--good); }
+  .badge.warn { background: var(--warn-bg); color: var(--warn); }
+  .badge.alert { background: var(--alert-bg); color: var(--alert); }
+  .cpl-val { font-weight: 700; }
+  .cpl-val.red { color: #b91c1c; }
+  .cpl-val.green { color: #15803d; }
+  .cpl-val.amber { color: #b45309; }
+
+  /* ── ALERT BOX ── */
+  .alert-box {
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-box.red { background: #fde8e8; border-left: 3px solid #b91c1c; }
+  .alert-box.amber { background: #fff7ed; border-left: 3px solid var(--orange); }
+  .alert-box.green { background: var(--good-bg); border-left: 3px solid var(--good); }
+  .alert-box.grey { background: var(--purple-tint); border-left: 3px solid var(--purple-mid); }
+  .alert-icon { font-size: 18px; line-height: 1.4; flex-shrink: 0; }
+  .alert-text { font-size: 14px; color: var(--body-text); line-height: 1.6; }
+  .alert-text strong { font-weight: 700; }
+
+  /* ── TOP PERFORMER ── */
+  .top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .top-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(74,47,160,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .top-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+  }
+  .top-card-icon { font-size: 24px; margin-bottom: 8px; }
+  .top-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .top-card-name { font-size: 18px; font-weight: 800; color: var(--purple-deep); margin-bottom: 4px; }
+  .top-card-value { font-size: 13px; font-weight: 600; color: var(--orange); }
+
+  /* ── NIRMAL SUMMARY ── */
+  .nirmal-box {
+    background: var(--purple-deep);
+    border-radius: 12px;
+    padding: 24px 28px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .nirmal-box::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(232,106,26,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .nirmal-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+  .nirmal-sub { font-size: 12px; color: var(--purple-mid); margin-bottom: 16px; }
+  .nirmal-message {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,0.18); }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: var(--orange-tint);
+    border-radius: 12px;
+    padding: 20px 24px;
+    border-left: 3px solid var(--orange);
+    margin-top: 24px;
+  }
+  .insight-box h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .insight-box p {
+    font-size: 14px;
+    color: var(--body-text);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  .footer-rule { height: 2.5px; background: var(--orange); width: 100%; margin: 40px 0 20px; }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--muted);
+    padding-bottom: 8px;
+  }
+  .footer strong { color: var(--purple-deep); font-weight: 700; }
+
+  @media (max-width: 640px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .summary-grid.five { grid-template-columns: repeat(2, 1fr); }
+    .top-grid { grid-template-columns: 1fr; }
+    .report-heading { font-size: 22px; }
+    .page { padding: 20px 16px 40px; }
+    .header-inner { padding: 24px 16px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <div class="brand-mark">Sugar<span>C</span>ARE Clinics</div>
+      <div class="brand-sub">Meta Ads</div>
+    </div>
+    <div class="report-title">Performance Report</div>
+    <div class="report-heading">May 30–31, 2026</div>
+    <div class="report-meta">Account <strong>act_965902582595556</strong> &nbsp;·&nbsp; Generated May 31, 2026 &nbsp;·&nbsp; 799 4884 799</div>
+  </div>
+  <div class="header-rule"></div>
+</div>
+
+<div class="page">
+
+  <!-- ══ SECTION 1: LIVE SNAPSHOT ══ -->
+  <div class="section-label" style="margin-top:8px;">Section 01</div>
+  <div class="section-title"><span class="live-dot"></span>Live Snapshot — May 31, 2026 (Today)</div>
+
+  <div class="summary-grid">
+    <div class="card highlight">
+      <div class="card-label">Total Spend</div>
+      <div class="card-value">₹2,687</div>
+      <div class="card-note">as of report time</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Total Leads</div>
+      <div class="card-value orange">55</div>
+      <div class="card-note">form submissions</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Avg CPL</div>
+      <div class="card-value">₹48.86</div>
+      <div class="card-note">cost per lead</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Impressions</div>
+      <div class="card-value">43,537</div>
+      <div class="card-note">Reach: 38,816</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th>
+          <th>Spend</th>
+          <th>Leads</th>
+          <th>CPL</th>
+          <th>CTR</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="campaign-name">Testimonial</td>
+          <td>₹439.15</td>
+          <td>14</td>
+          <td class="cpl-val green">₹31.37</td>
+          <td>3.48%</td>
+          <td><span class="badge good">✓ Strong</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Sangeetha</td>
+          <td>₹335.91</td>
+          <td>12</td>
+          <td class="cpl-val green">₹27.99</td>
+          <td>3.63%</td>
+          <td><span class="badge good">✓ Best CPL</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Ramla</td>
+          <td>₹395.92</td>
+          <td>2</td>
+          <td class="cpl-val red">₹197.96</td>
+          <td>2.95%</td>
+          <td><span class="badge alert">⚠ Watch</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Punnayurkulam</td>
+          <td>₹265.48</td>
+          <td>6</td>
+          <td class="cpl-val green">₹44.25</td>
+          <td>3.85%</td>
+          <td><span class="badge good">✓ Good</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Edappal</td>
+          <td>₹270.04</td>
+          <td>6</td>
+          <td class="cpl-val green">₹45.01</td>
+          <td>3.18%</td>
+          <td><span class="badge good">✓ Good</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Padinjaragadi</td>
+          <td>₹257.12</td>
+          <td>6</td>
+          <td class="cpl-val green">₹42.85</td>
+          <td>2.85%</td>
+          <td><span class="badge good">✓ Good</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Kondotty</td>
+          <td>₹253.31</td>
+          <td>3</td>
+          <td class="cpl-val amber">₹84.44</td>
+          <td>1.87%</td>
+          <td><span class="badge warn">~ Monitor</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Chemmad</td>
+          <td>₹248.60</td>
+          <td>3</td>
+          <td class="cpl-val amber">₹82.87</td>
+          <td>2.80%</td>
+          <td><span class="badge warn">~ Monitor</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Areekode</td>
+          <td>₹221.86</td>
+          <td>3</td>
+          <td class="cpl-val amber">₹73.95</td>
+          <td>2.21%</td>
+          <td><span class="badge warn">~ Monitor</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert-box red">
+    <div class="alert-icon">🔴</div>
+    <div class="alert-text"><strong>Ramla needs attention today.</strong> ₹396 spent but only 2 leads — CPL nearly ₹198. It's generating 227 clicks (good CTR) but nobody is filling the form. Possible creative fatigue or form friction. Consider pausing or swapping creative if this continues by evening.</div>
+  </div>
+
+  <!-- ══ SECTION DIVIDER ══ -->
+  <div class="section-rule"></div>
+
+  <!-- ══ SECTION 2: YESTERDAY FULL DAY ══ -->
+  <div class="section-label">Section 02</div>
+  <div class="section-title">Daily Report — Saturday May 30, 2026 (Full Day)</div>
+
+  <div class="summary-grid five">
+    <div class="card highlight">
+      <div class="card-label">Total Spend</div>
+      <div class="card-value">₹4,601</div>
+      <div class="card-note">higher than avg</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Total Leads</div>
+      <div class="card-value orange">50</div>
+      <div class="card-note">form fills</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Avg CPL</div>
+      <div class="card-value">₹92.04</div>
+      <div class="card-note">↑ from Sun avg</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Impressions</div>
+      <div class="card-value">98,322</div>
+      <div class="card-note">2.3× today</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Reach</div>
+      <div class="card-value">89,432</div>
+      <div class="card-note">unique accounts</div>
+    </div>
+  </div>
+
+  <div class="alert-box grey">
+    <div class="alert-icon">📌</div>
+    <div class="alert-text">Yesterday was a high-spend, lower-efficiency Saturday. Almost double the usual daily spend (avg ~₹2,500) but fewer leads per rupee. Saturday audiences show wider reach but softer conversion intent — typical for the Kerala market.</div>
+  </div>
+
+  <div class="table-wrap" style="margin-top:16px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th>
+          <th>Spend</th>
+          <th>Leads</th>
+          <th>CPL</th>
+          <th>CTR</th>
+          <th>Flag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="campaign-name">Testimonial</td>
+          <td>₹771.73</td>
+          <td>19</td>
+          <td class="cpl-val green">₹40.62</td>
+          <td>2.91%</td>
+          <td><span class="badge good">🏆 Best</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Sangeetha</td>
+          <td>₹859.08</td>
+          <td>10</td>
+          <td class="cpl-val amber">₹85.91</td>
+          <td>3.72%</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Ramla</td>
+          <td>₹818.11</td>
+          <td>8</td>
+          <td class="cpl-val amber">₹102.26</td>
+          <td>2.95%</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Edappal</td>
+          <td>₹517.98</td>
+          <td>3</td>
+          <td class="cpl-val red">₹172.66</td>
+          <td>2.54%</td>
+          <td><span class="badge warn">⚠ High CPL</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Kondotty</td>
+          <td>₹506.10</td>
+          <td>2</td>
+          <td class="cpl-val red">₹253.05</td>
+          <td>2.00%</td>
+          <td><span class="badge alert">⚠ Worst CPL</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Punnayurkulam</td>
+          <td>₹438.15</td>
+          <td>3</td>
+          <td class="cpl-val amber">₹146.05</td>
+          <td>2.65%</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Padinjaragadi</td>
+          <td>₹405.39</td>
+          <td>0</td>
+          <td class="cpl-val red">—</td>
+          <td>3.33%</td>
+          <td><span class="badge alert">🚨 0 Leads</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Chemmad</td>
+          <td>₹365.83</td>
+          <td>2</td>
+          <td class="cpl-val red">₹182.92</td>
+          <td>2.46%</td>
+          <td><span class="badge warn">⚠ High CPL</span></td>
+        </tr>
+        <tr>
+          <td class="campaign-name">Areekode</td>
+          <td>₹318.41</td>
+          <td>3</td>
+          <td class="cpl-val amber">₹106.14</td>
+          <td>1.98%</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ SECTION 3: TOP PERFORMERS ══ -->
+  <div class="section-rule"></div>
+  <div class="section-label">Section 03</div>
+  <div class="section-title">Top Performers — Yesterday</div>
+
+  <div class="top-grid">
+    <div class="top-card">
+      <div class="top-card-icon">🏆</div>
+      <div class="top-card-label">Lowest CPL</div>
+      <div class="top-card-name">Testimonial</div>
+      <div class="top-card-value">₹40.62 per lead</div>
+    </div>
+    <div class="top-card">
+      <div class="top-card-icon">📈</div>
+      <div class="top-card-label">Most Leads</div>
+      <div class="top-card-name">Testimonial</div>
+      <div class="top-card-value">19 leads generated</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 4: ISSUES ══ -->
+  <div class="section-rule"></div>
+  <div class="section-label">Section 04</div>
+  <div class="section-title">Campaigns with Issues — Yesterday</div>
+
+  <div class="alert-box red">
+    <div class="alert-icon">🚨</div>
+    <div class="alert-text"><strong>Padinjaragadi — ₹405 spent, 0 leads.</strong> High clicks (235) and decent CTR (3.33%) — people clicked the ad but nobody filled the form. Possible landing page issue or audience mismatch on Saturday. Needs investigation before more spend.</div>
+  </div>
+  <div class="alert-box amber">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-text"><strong>Kondotty — ₹253/lead.</strong> Worst CPL of the day. High spend (₹506) with only 2 leads. Low CTR (2.00%) suggests ad is not resonating with the Kondotty audience either.</div>
+  </div>
+  <div class="alert-box amber">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-text"><strong>Edappal (₹173/lead) · Chemmad (₹183/lead)</strong> — both above the ₹150 alert threshold. Overspent relative to leads generated on Saturday.</div>
+  </div>
+
+  <!-- ══ SECTION 5: BUDGET HEALTH ══ -->
+  <div class="section-rule"></div>
+  <div class="section-label">Section 05</div>
+  <div class="section-title">Budget Health</div>
+
+  <div class="summary-grid" style="grid-template-columns: repeat(3,1fr);">
+    <div class="card">
+      <div class="card-label">Yesterday Spend</div>
+      <div class="card-value orange">₹4,601</div>
+      <div class="card-note">vs ~₹2,500 avg/day</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Today Spend (live)</div>
+      <div class="card-value">₹2,687</div>
+      <div class="card-note">on track, normal pace</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Budget Risk Today</div>
+      <div class="card-value" style="color:#15803d;">Low</div>
+      <div class="card-note">no mid-day exhaustion risk</div>
+    </div>
+  </div>
+
+  <div class="alert-box amber">
+    <div class="alert-icon">💸</div>
+    <div class="alert-text"><strong>Saturday overspend alert.</strong> ₹4,601 on May 30 is nearly double the daily average. The location campaigns (Edappal, Kondotty, Punnayurkulam) all spent significantly more yesterday but converted poorly. Worth checking if daily budgets were changed — or if Saturday's audience simply doesn't convert as well.</div>
+  </div>
+
+  <!-- ══ KEY TAKEAWAY ══ -->
+  <div class="insight-box">
+    <h4>Key Takeaway — Comparing Both Days</h4>
+    <p>Today (Sunday) is performing significantly better — same number of leads (55) at nearly half the CPL (₹49 vs ₹92) and roughly half the spend. <strong>Testimonial and Sangeetha are the workhorses</strong> — consistent, efficient, and proven. The new location campaigns need attention, especially <strong>Kondotty and Padinjaragadi</strong> which are consistently inefficient. Consider reviewing creative or audience targeting for those two before the next week's budget cycle.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-rule"></div>
+  <div class="footer">
+    <div><strong>SugarCARE Clinics</strong> · Meta Ads Report · May 31, 2026</div>
+    <div>799 4884 799</div>
+  </div>
+
+</div>
+
+<script>
+function copyNirmal() {
+  const text = `📊 *SugarCARE Ads — May 31 (live) + May 30 (full day)*\n\nToday (May 31): 55 leads @ avg ₹49 CPL. Spent ₹2,687. Best: Sangeetha ₹28/lead. Watch: Ramla ₹198/lead — needs review.\n\nYesterday (May 30): 50 leads @ avg ₹92 CPL. Spent ₹4,602 — unusually high. Best: Testimonial ₹41/lead, 19 leads. Issues: Padinjaragadi ₹405 spent with 0 leads. Kondotty & Edappal CPL above ₹170.`;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy Message', 2000);
+  });
+}
+</script>
+</body>
+</html>
