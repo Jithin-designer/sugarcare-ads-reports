@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SugarCARE — Investor Story 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --p: #4A2FA0; --dp: #1A0E50; --pt: #E4E0F4; --pm: #C9BFEF;
+  --o: #E86A1A; --ot: #FCE4D4;
+  --w: #fff; --bg: #FAFAF8; --bod: #1A0E50; --mu: #5C5478;
+  --gn: #15803d; --gb: #dcfce7;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--bod); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+.hero {
+  background: var(--dp);
+  padding: 80px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(232,106,26,.12) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 80px; left: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(74,47,160,.3) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(232,106,26,.15);
+  border: 1px solid rgba(232,106,26,.3);
+  border-radius: 99px;
+  padding: 5px 14px;
+  font-size: 12px; font-weight: 600;
+  color: #f4a06a;
+  letter-spacing: .06em; text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-badge::before { content: '●'; font-size: 8px; color: var(--o); }
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 6vw, 64px);
+  color: var(--w);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+.hero h1 em { color: var(--o); font-style: italic; }
+.hero-sub {
+  font-size: 17px; color: var(--pm);
+  max-width: 560px; line-height: 1.7;
+  margin-bottom: 48px;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+  margin-top: 0;
+}
+.hs {
+  padding: 28px 0;
+  border-right: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+}
+.hs:last-child { border-right: none; }
+.hs-n {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--w);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hs-n span { color: var(--o); }
+.hs-l { font-size: 11px; color: var(--pm); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+.orule { height: 2.5px; background: var(--o); }
+
+section { padding: 72px 0; }
+section:nth-child(even) { background: var(--w); }
+.sec-chip {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--o); margin-bottom: 10px;
+}
+.sec-h {
+  font-family: var(--serif);
+  font-size: clamp(26px, 4vw, 40px);
+  color: var(--dp);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.sec-h em { color: var(--o); font-style: italic; }
+.sec-p { font-size: 16px; color: var(--mu); line-height: 1.8; max-width: 640px; margin-bottom: 36px; }
+
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.prob-card {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 24px;
+  border: 1px solid rgba(74,47,160,.1);
+  position: relative;
+  overflow: hidden;
+}
+.prob-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--pt);
+}
+.prob-card.highlight::before { background: var(--o); }
+.prob-icon { font-size: 24px; margin-bottom: 12px; }
+.prob-title { font-size: 15px; font-weight: 700; color: var(--dp); margin-bottom: 6px; }
+.prob-body { font-size: 14px; color: var(--mu); line-height: 1.6; }
+
+.growth-wrap {
+  background: var(--dp);
+  border-radius: 20px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.growth-wrap::after {
+  content: '';
+  position: absolute; bottom: -60px; right: -60px;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(232,106,26,.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.growth-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pm); margin-bottom: 8px; }
+.growth-title { font-family: var(--serif); font-size: 22px; color: var(--w); margin-bottom: 32px; }
+.bars-area { display: flex; align-items: flex-end; gap: 12px; height: 160px; margin-bottom: 12px; }
+.bar-g { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.bar-g .bv { width: 100%; border-radius: 6px 6px 0 0; position: relative; }
+.bar-g .bv.active { background: var(--o); }
+.bar-g .bv.past { background: rgba(74,47,160,.6); }
+.bar-g .bv.proj { background: rgba(232,106,26,.3); border: 2px dashed rgba(232,106,26,.6); }
+.bar-g .bn { font-size: 13px; font-weight: 700; color: var(--w); }
+.bar-g .bl { font-size: 11px; color: var(--pm); font-weight: 500; }
+.growth-note { font-size: 12px; color: var(--pm); margin-top: 8px; }
+.growth-note span { color: var(--o); font-weight: 700; }
+
+.model-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.tier-list { display: flex; flex-direction: column; gap: 10px; }
+.tier {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--bg);
+  border-radius: 12px; padding: 16px 20px;
+  border: 1px solid rgba(74,47,160,.1);
+  transition: transform .2s, box-shadow .2s;
+}
+.tier:hover { transform: translateX(4px); box-shadow: -4px 0 0 var(--o); }
+.tier.hero-tier { background: var(--dp); border-color: var(--dp); }
+.tier.hero-tier .t-name { color: var(--w); }
+.tier.hero-tier .t-val { color: var(--o); }
+.tier.hero-tier .t-desc { color: var(--pm); }
+.t-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.t-info { flex: 1; }
+.t-name { font-size: 14px; font-weight: 700; color: var(--dp); }
+.t-desc { font-size: 12px; color: var(--mu); }
+.t-val { font-size: 18px; font-weight: 700; color: var(--p); font-family: var(--serif); }
+
+.econ-card {
+  background: var(--dp);
+  border-radius: 16px; padding: 28px;
+  position: relative; overflow: hidden;
+}
+.econ-card::before {
+  content: '"';
+  position: absolute; top: -10px; right: 20px;
+  font-family: var(--serif); font-size: 120px;
+  color: rgba(232,106,26,.15); line-height: 1;
+}
+.econ-q { font-size: 13px; font-weight: 600; color: var(--pm); margin-bottom: 16px; letter-spacing: .04em; }
+.econ-text { font-family: var(--serif); font-size: 20px; color: var(--w); line-height: 1.5; margin-bottom: 20px; position: relative; z-index: 1; }
+.econ-text em { color: var(--o); font-style: italic; }
+.econ-attr { font-size: 12px; color: var(--pm); }
+.econ-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.en { background: rgba(255,255,255,.06); border-radius: 10px; padding: 14px; }
+.en-v { font-size: 22px; font-weight: 700; color: var(--w); font-family: var(--serif); }
+.en-v span { color: var(--o); }
+.en-l { font-size: 11px; color: var(--pm); margin-top: 2px; }
+
+.attr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
+.attr-card {
+  border-radius: 14px; padding: 22px;
+  border: 1px solid rgba(74,47,160,.1);
+  background: var(--w);
+  position: relative; overflow: hidden;
+}
+.attr-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px;
+}
+.attr-card.meta::after { background: var(--p); }
+.attr-card.doc::after { background: var(--o); }
+.attr-card.wom::after { background: var(--gn); }
+.attr-n { font-family: var(--serif); font-size: 40px; color: var(--dp); line-height: 1; }
+.attr-pct { font-size: 14px; font-weight: 700; color: var(--mu); margin-bottom: 4px; }
+.attr-label { font-size: 13px; color: var(--mu); line-height: 1.5; }
+.attr-rev { font-size: 13px; font-weight: 700; color: var(--o); margin-top: 8px; }
+
+.moat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.moat-card {
+  background: var(--w);
+  border-radius: 14px; padding: 24px;
+  border: 1px solid rgba(74,47,160,.1);
+}
+.moat-icon { font-size: 28px; margin-bottom: 12px; }
+.moat-title { font-size: 15px; font-weight: 700; color: var(--dp); margin-bottom: 8px; }
+.moat-body { font-size: 13px; color: var(--mu); line-height: 1.65; }
+.moat-stat { font-size: 20px; font-weight: 700; color: var(--p); font-family: var(--serif); margin-top: 12px; }
+
+.ask-section { background: var(--dp); padding: 80px 0; }
+.ask-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.ask-left .sec-h { color: var(--w); }
+.ask-left .sec-p { color: var(--pm); }
+.ask-items { display: flex; flex-direction: column; gap: 16px; }
+.ask-item {
+  background: rgba(255,255,255,.06);
+  border-radius: 12px; padding: 20px 24px;
+  border-left: 3px solid var(--o);
+}
+.ask-item-title { font-size: 14px; font-weight: 700; color: var(--w); margin-bottom: 4px; }
+.ask-item-body { font-size: 13px; color: var(--pm); line-height: 1.6; }
+.ask-item-amt { font-family: var(--serif); font-size: 22px; color: var(--o); margin-top: 8px; }
+
+.proof-wrap {
+  background: linear-gradient(135deg, var(--pt) 0%, #fff 60%);
+  border-radius: 20px; padding: 40px;
+  border: 1px solid rgba(74,47,160,.15);
+  position: relative; overflow: hidden;
+}
+.proof-wrap::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(232,106,26,.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.proof-q { font-family: var(--serif); font-size: clamp(20px, 3vw, 28px); color: var(--dp); line-height: 1.4; margin-bottom: 20px; max-width: 600px; }
+.proof-q em { color: var(--o); font-style: italic; }
+.proof-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+.ps-n { font-family: var(--serif); font-size: 36px; color: var(--p); line-height: 1; }
+.ps-l { font-size: 12px; color: var(--mu); font-weight: 500; margin-top: 2px; }
+
+.foot { background: var(--dp); padding: 36px 0; }
+.foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.foot-brand { font-family: var(--serif); font-size: 20px; color: var(--w); }
+.foot-brand span { color: var(--o); }
+.foot-right { font-size: 12px; color: var(--pm); text-align: right; }
+
+@media (max-width: 640px) {
+  section { padding: 48px 0; }
+  .hero { padding: 48px 0 0; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .hs { padding: 20px 0; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .model-split { grid-template-columns: 1fr; }
+  .attr-grid { grid-template-columns: 1fr; }
+  .moat-grid { grid-template-columns: 1fr; }
+  .ask-inner { grid-template-columns: 1fr; gap: 28px; }
+  .growth-wrap { padding: 24px; }
+  .bars-area { height: 120px; gap: 8px; }
+  .foot-inner { justify-content: center; text-align: center; }
+  .foot-right { text-align: center; }
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-inner > * { animation: fadeUp .6s ease both; }
+.hero-badge { animation-delay: .1s; }
+.hero h1 { animation-delay: .2s; }
+.hero-sub { animation-delay: .3s; }
+.hero-stats { animation-delay: .4s; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-badge">Investor Brief · May 2026</div>
+      <h1>Structured diabetes care<br>at <em>Kerala scale</em></h1>
+      <p class="hero-sub">SugarCARE is building India's first affordable, subscription-based chronic care programme for diabetics — anchored in real clinics, powered by digital infrastructure.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hs">
+        <div class="hs-n">5<span>×</span></div>
+        <div class="hs-l">Growth in 3 months</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">₹<span>49</span></div>
+        <div class="hs-l">Cost per lead (Meta)</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">810</div>
+        <div class="hs-l">Appointments in May</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">40<span>K+</span></div>
+        <div class="hs-l">Patient network (Preventify)</div>
+      </div>
+    </div>
+  </div>
+  <div class="orule"></div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-chip">The Problem</div>
+    <h2 class="sec-h">Diabetes care in India is<br><em>fragmented and expensive</em></h2>
+    <p class="sec-p">India has 100M+ diabetics. Most pay for care in three separate bills — medicine, doctor, lab — with no one accountable for outcomes between visits.</p>
+    <div class="problem-grid">
+      <div class="prob-card highlight">
+        <div class="prob-icon">📊</div>
+        <div class="prob-title">The hidden monthly cost</div>
+        <div class="prob-body">A typical diabetic spends ₹750/month on medicine + ₹250 on doctor visits = ₹1,000/month. Fragmented. No structure. No follow-up.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">🏥</div>
+        <div class="prob-title">Episodic care fails</div>
+        <div class="prob-body">Most doctors see a patient every 3 months. No weekly check-in. No dietitian. No accountability between visits. HbA1c stays high.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">💰</div>
+        <div class="prob-title">Premium alternatives price out the majority</div>
+        <div class="prob-body">Amura charges ₹10,000/month. Strong outcomes — but inaccessible to the 90% of diabetics who can't afford it.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">📍</div>
+        <div class="prob-title">Kerala is the highest-risk state</div>
+        <div class="prob-body">Kerala has among the highest diabetes prevalence per capita in South Asia, driven by the TOFI phenotype — thin outside, fat inside. The market is here.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-chip">The Solution</div>
+    <h2 class="sec-h">Structured monthly care.<br><em>Same cost. Better outcomes.</em></h2>
+    <p class="sec-p">SugarCARE bundles what the patient already pays for — medicine, doctor, dietitian — into one accountable programme. The price is the same. The structure is the value.</p>
+    <div class="model-split">
+      <div class="model-left">
+        <div class="tier-list">
+          <div class="tier">
+            <div class="t-dot" style="background:#C9BFEF;"></div>
+            <div class="t-info">
+              <div class="t-name">Prevention</div>
+              <div class="t-desc">6-month programme · Pre-diabetics</div>
+            </div>
+            <div class="t-val">₹300<span style="font-size:12px;color:var(--mu);font-family:var(--sans);font-weight:500;">/mo</span></div>
+          </div>
+          <div class="tier">
+            <div class="t-dot" style="background:#8B6FD4;"></div>
+            <div class="t-info">
+              <div class="t-name">Remission</div>
+              <div class="t-desc">12-month programme · Early diabetics</div>
+            </div>
+            <div class="t-val">₹600<span style="font-size:12px;color:var(--mu);font-family:var(--sans);font-weight:500;">/mo</span></div>
+          </div>
+          <div class="tier hero-tier">
+            <div class="t-dot" style="background:var(--o);"></div>
+            <div class="t-info">
+              <div class="t-name" style="color:#fff;">Control ⭐ Hero Plan</div>
+              <div class="t-desc">12-month programme · Active diabetics</div>
+            </div>
+            <div class="t-val">₹1,200<span style="font-size:12px;color:var(--pm);font-family:var(--sans);font-weight:500;">/mo</span></div>
+          </div>
+          <div class="tier">
+            <div class="t-dot" style="background:var(--o);"></div>
+            <div class="t-info">
+              <div class="t-name">Complication</div>
+              <div class="t-desc">12-month programme · Advanced cases</div>
+            </div>
+            <div class="t-val">₹1,800<span style="font-size:12px;color:var(--mu);font-family:var(--sans);font-weight:500;">/mo</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="econ-card">
+          <div class="econ-q">The economic argument</div>
+          <div class="econ-text">"You're already paying ₹1,000/month. Let us make it <em>work for you</em>."</div>
+          <div class="econ-attr">The patient isn't being asked to spend more. They're being asked to spend smarter.</div>
+          <div class="econ-numbers">
+            <div class="en">
+              <div class="en-v">₹<span>49</span></div>
+              <div class="en-l">Cost per lead (Meta ads)</div>
+            </div>
+            <div class="en">
+              <div class="en-v">₹<span>14.4K</span></div>
+              <div class="en-l">LTV (₹1,200 × 12 months)</div>
+            </div>
+            <div class="en">
+              <div class="en-v"><span>290</span>×</div>
+              <div class="en-l">LTV / CAC ratio at scale</div>
+            </div>
+            <div class="en">
+              <div class="en-v"><span>40</span></div>
+              <div class="en-l">Reversals from Preventify network</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-chip">Traction</div>
+    <h2 class="sec-h">5× growth in <em>90 days</em></h2>
+    <p class="sec-p">From 163 appointments in March to 810 in May. The growth is organic momentum built on a ₹25,000/month ad spend — not an inflated marketing budget.</p>
+    <div class="growth-wrap">
+      <div class="growth-label">Monthly appointment volume</div>
+      <div class="growth-title">March → May 2026</div>
+      <div class="bars-area">
+        <div class="bar-g">
+          <div class="bn" style="color:var(--pm);">163</div>
+          <div class="bv past" style="height:32px;"></div>
+          <div class="bl">March</div>
+        </div>
+        <div class="bar-g">
+          <div class="bn" style="color:var(--pm);">411</div>
+          <div class="bv past" style="height:81px;"></div>
+          <div class="bl">April</div>
+        </div>
+        <div class="bar-g">
+          <div class="bn">810</div>
+          <div class="bv active" style="height:160px;"></div>
+          <div class="bl" style="color:var(--o);">May ↑97%</div>
+        </div>
+        <div class="bar-g">
+          <div class="bn" style="color:rgba(232,106,26,.6);">~1,500</div>
+          <div class="bv proj" style="height:160px;"></div>
+          <div class="bl" style="color:rgba(201,191,239,.5);">Jun (proj)</div>
+        </div>
+        <div class="bar-g">
+          <div class="bn" style="color:rgba(232,106,26,.4);">~2,800</div>
+          <div class="bv proj" style="height:160px; opacity:.6;"></div>
+          <div class="bl" style="color:rgba(201,191,239,.4);">Jul (proj)</div>
+        </div>
+      </div>
+      <div class="growth-note">Strongest week ever: May 25–31 — <span>235 appointments</span> in a single week</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;">
+      <div style="background:var(--w);border-radius:14px;padding:22px;border:1px solid rgba(74,47,160,.1);text-align:center;">
+        <div style="font-family:var(--serif);font-size:36px;color:var(--dp);">55</div>
+        <div style="font-size:12px;color:var(--mu);margin-top:4px;">Active subscribers (May 31)</div>
+      </div>
+      <div style="background:var(--w);border-radius:14px;padding:22px;border:1px solid rgba(74,47,160,.1);text-align:center;">
+        <div style="font-family:var(--serif);font-size:36px;color:var(--o);">₹65K</div>
+        <div style="font-size:12px;color:var(--mu);margin-top:4px;">Active subscription revenue</div>
+      </div>
+      <div style="background:var(--w);border-radius:14px;padding:22px;border:1px solid rgba(74,47,160,.1);text-align:center;">
+        <div style="font-family:var(--serif);font-size:36px;color:var(--p);">8</div>
+        <div style="font-size:12px;color:var(--mu);margin-top:4px;">Clinic locations, Malappuram</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-chip">Acquisition</div>
+    <h2 class="sec-h">Multiple channels.<br><em>One is dominant.</em></h2>
+    <p class="sec-p">Of 55 active subscribers, we know the acquisition source for 47. Meta ads are the primary driver — but doctor referrals and word of mouth prove the brand is working organically too.</p>
+    <div class="attr-grid">
+      <div class="attr-card meta">
+        <div class="attr-n">25</div>
+        <div class="attr-pct">45% of active subscribers</div>
+        <div class="attr-label">Meta Ads<br>Confirmed via phone match + DM Pro</div>
+        <div class="attr-rev">₹37,700 revenue</div>
+      </div>
+      <div class="attr-card doc">
+        <div class="attr-n">16</div>
+        <div class="attr-pct">29% of active subscribers</div>
+        <div class="attr-label">Doctor Referral<br>Organic — zero ad spend</div>
+        <div class="attr-rev">₹13,150 revenue</div>
+      </div>
+      <div class="attr-card wom">
+        <div class="attr-n">5</div>
+        <div class="attr-pct">9% of active subscribers</div>
+        <div class="attr-label">Word of Mouth<br>Patients referring patients</div>
+        <div class="attr-rev">₹7,500 revenue</div>
+      </div>
+    </div>
+    <div style="background:var(--pt);border-radius:14px;padding:22px 26px;border-left:3px solid var(--p);margin-top:4px;">
+      <div style="font-size:14px;color:var(--bod);line-height:1.7;">
+        <strong>At ₹49 CPL with a confirmed Meta → subscriber path:</strong> the Ramla campaign alone converted 4 subscribers from leads costing ~₹200 total. Each subscriber generates ₹1,000–1,200/month. That's a payback period of under 1 week on acquisition cost.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-chip">Why We Win</div>
+    <h2 class="sec-h">Six structural <em>advantages</em></h2>
+    <div class="moat-grid">
+      <div class="moat-card">
+        <div class="moat-icon">🏥</div>
+        <div class="moat-title">Real clinic infrastructure</div>
+        <div class="moat-body">8 physical locations across Malappuram. Not a telemedicine app. Real doctors, real check-ins, real accountability.</div>
+        <div class="moat-stat">8 clinics</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">🫀</div>
+        <div class="moat-title">Clinical proof</div>
+        <div class="moat-body">40 diabetes reversals from the Preventify network — documented, real, and waiting to be published. HbA1c 11→6 in 4 months is the flagship case.</div>
+        <div class="moat-stat">40 reversals</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">💡</div>
+        <div class="moat-title">Warm patient network</div>
+        <div class="moat-body">Preventify has served 40,000+ patients across 3+ years. A subset of 6,000–8,000 are diabetics — a re-engagement asset no new entrant can replicate.</div>
+        <div class="moat-stat">40,000+ patients</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">💸</div>
+        <div class="moat-title">Unit economics work at ₹49 CPL</div>
+        <div class="moat-body">Industry benchmark for healthcare lead gen in India: ₹200–400. SugarCARE is running at ₹49. This isn't luck — it's testimonial creative + hyper-local targeting.</div>
+        <div class="moat-stat">₹49 CPL</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">🇮🇳</div>
+        <div class="moat-title">Malayalam-first brand</div>
+        <div class="moat-body">Every national competitor communicates in English. SugarCARE speaks Kerala's language, uses Kerala's cultural cues, and earns Kerala family trust.</div>
+        <div class="moat-stat">Malayalam-native</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">👨‍⚕️</div>
+        <div class="moat-title">Founder-clinician alignment</div>
+        <div class="moat-body">Dr. Rakesh (CMO) is an on-camera clinical presence who wants to build content. Most healthcare startups fight to get their doctors to engage. This one doesn't.</div>
+        <div class="moat-stat">CMO-led content</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="proof-wrap">
+      <div class="sec-chip">Clinical Proof</div>
+      <div class="proof-q">"ഷുഗർ ഒരു ലക്ഷണം മാത്രമാണ്. കേടു കൂടുതൽ <em>ആഴത്തിലാണ്</em>."</div>
+      <div style="font-size:14px;color:var(--mu);margin-bottom:24px;font-style:italic;">Sugar is just a symptom. The damage is deeper than that. — Dr. Rakesh KR, CMO</div>
+      <div class="proof-stats">
+        <div class="ps">
+          <div class="ps-n">40</div>
+          <div class="ps-l">Documented reversals<br>from Preventify network</div>
+        </div>
+        <div class="ps">
+          <div class="ps-n">11→6</div>
+          <div class="ps-l">HbA1c improvement<br>flagship patient, 4 months</div>
+        </div>
+        <div class="ps">
+          <div class="ps-n">77</div>
+          <div class="ps-l">Total programme<br>subscribers enrolled</div>
+        </div>
+        <div class="ps">
+          <div class="ps-n">52yrs</div>
+          <div class="ps-l">Average patient age<br>(highest-risk demographic)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ask-section">
+  <div class="wrap">
+    <div class="ask-inner">
+      <div class="ask-left">
+        <div class="sec-chip" style="color:#f4a06a;">The Ask</div>
+        <h2 class="sec-h">What we need.<br><em>What it unlocks.</em></h2>
+        <p class="sec-p">We're at the inflection point. The unit economics work. The clinical model is proven. Capital unlocks the three things we can't do manually at scale.</p>
+      </div>
+      <div class="ask-items">
+        <div class="ask-item">
+          <div class="ask-item-title">WhatsApp automation infrastructure</div>
+          <div class="ask-item-body">Build WhatsApp API automation to convert warm leads into booked appointments at scale.</div>
+          <div class="ask-item-amt">Highest-leverage unlock</div>
+        </div>
+        <div class="ask-item">
+          <div class="ask-item-title">Clinic network expansion</div>
+          <div class="ask-item-body">Replicate the proven Clinic 1 model (70% completion rate, Dr. Rakesh protocol) across new geographies in North Kerala.</div>
+          <div class="ask-item-amt">Scale the physical moat</div>
+        </div>
+        <div class="ask-item">
+          <div class="ask-item-title">Content & organic flywheel</div>
+          <div class="ask-item-body">Activate the 40-reversal proof point publicly. Launch 5 videos/week across channels. SEO for "diabetes programme Malappuram" — currently owned by nobody.</div>
+          <div class="ask-item-amt">Reduce CAC to near zero</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">Sugar<span>C</span>ARE Clinics</div>
+      <div class="foot-right">
+        799 4884 799 · May 2026<br>
+        HomoRx Healthtech Private Limited
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
