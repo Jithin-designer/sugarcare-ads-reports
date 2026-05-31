@@ -25,6 +25,3 @@ CampaignName — XX leads — ₹XX CPL
 ## Watch
 - [danger] CampaignName — High CPL (₹XXX): Spent ₹XXX, only X leads. Description.
 - [dead] Dead Campaigns: X campaigns showing ACTIVE but zero spend. Safe to pause.
-
-## Nirmal
-Today (Month DD): XX leads @ avg ₹XX CPL. Spent ₹X,XXX. Best: Campaign ₹XX/lead, Campaign XX leads. Watch: Campaign issue here.

@@ -64,9 +64,6 @@ def parse_md(text):
                                "body": m.group(3).strip()})
     data["issues"] = issues
 
-    if "nirmal" in sections:
-        data["nirmal"] = " ".join(l for l in sections["nirmal"] if l.strip()).strip()
-
     return data
 
 
@@ -176,7 +173,6 @@ def run(md_path_str):
         "%%WINNER_LEADS_NAME%%": leads_name,
         "%%WINNER_LEADS_DETAIL%%": leads_detail,
         "%%ALERTS%%":            build_alerts(data.get("issues", [])),
-        "%%NIRMAL_MSG%%":        data.get("nirmal", ""),
     }
 
     html = template
